@@ -897,7 +897,6 @@ namespace CoPilot
                     CoPilot.instance.Settings.CorruptingFeverMinRare.Value =
                         ImGuiExtension.IntSlider("min Enemy Rare", CoPilot.instance.Settings.CorruptingFeverMinRare);
                     CoPilot.instance.Settings.CorruptingFeverMinUnique.Value = ImGuiExtension.IntSlider("min Enemy Unique", CoPilot.instance.Settings.CorruptingFeverMinUnique);
-                    CoPilot.instance.Settings.CorruptingFeverCooldown.Value = ImGuiExtension.IntSlider("cooldown in milliseconds", CoPilot.instance.Settings.CorruptingFeverCooldown);
                 }
             }
             catch (Exception e)
