@@ -307,7 +307,7 @@ namespace CoPilot
                         break;
                     case "corrupting_fever":
                         focus.Id = skill.Id;
-                        focus.BuffName = "corrupting_fever";
+                        focus.BuffName = "corrupted_blood_stream";
                         break;
                 }
             }
