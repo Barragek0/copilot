@@ -631,7 +631,6 @@ namespace CoPilot
                             if (skill.Id == SkillInfo.corruptingFever.Id)
                             {
                                 if (!buffs.Exists(b => b.Name == SkillInfo.corruptingFever.BuffName)
-                                 && SkillInfo.ManageCooldown(SkillInfo.corruptingFever, skill)
                                  && MonsterCheck(
                                         Settings.CorruptingFeverRange,
                                         Settings.CorruptingFeverMinAny,
