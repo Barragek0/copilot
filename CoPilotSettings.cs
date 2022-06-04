@@ -14,7 +14,7 @@ namespace CoPilot
 
         #endregion
 
-        public ToggleNode debugMode = new ToggleNode(false);
+        public ToggleNode debugMode = new ToggleNode(true);
 
         #region Doedre Effigy
 
