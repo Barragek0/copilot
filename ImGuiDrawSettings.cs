@@ -897,6 +897,9 @@ namespace CoPilot
                     CoPilot.instance.Settings.CorruptingFeverMinRare.Value =
                         ImGuiExtension.IntSlider("min Enemy Rare", CoPilot.instance.Settings.CorruptingFeverMinRare);
                     CoPilot.instance.Settings.CorruptingFeverMinUnique.Value = ImGuiExtension.IntSlider("min Enemy Unique", CoPilot.instance.Settings.CorruptingFeverMinUnique);
+                    CoPilot.instance.Settings.CorruptingFeverReqFullHealth.Value = ImGuiExtension.Checkbox(
+                        "Only use on full health",
+                        CoPilot.instance.Settings.CorruptingFeverReqFullHealth.Value);
                 }
             }
             catch (Exception e)
