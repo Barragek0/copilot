@@ -630,7 +630,8 @@ namespace CoPilot
                         {
                             if (skill.Id == SkillInfo.corruptingFever.Id)
                             {
-                                if (!buffs.Exists(b => b.Name == SkillInfo.corruptingFever.BuffName)
+                                if (!buffs.Exists(b => b.Name.Contains("blood_surge") || b.Name.Contains("corrupting_fever"))
+                                 && SkillInfo.ManageCooldown(SkillInfo.corruptingFever, skill)
                                  && MonsterCheck(
                                         Settings.CorruptingFeverRange,
                                         Settings.CorruptingFeverMinAny,
@@ -638,6 +639,7 @@ namespace CoPilot
                                         Settings.CorruptingFeverMinUnique))
                                 {
                                     Keyboard.KeyPress(GetSkillInputKey(skill.SkillSlotIndex));
+                                    SkillInfo.corruptingFever.Cooldown = 100;
                                 }
                             }
                         }
