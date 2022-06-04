@@ -881,6 +881,30 @@ namespace CoPilot
                 CoPilot.instance.LogError(e.ToString());
             }
 
+             try
+            {
+                // Corrupting Fever
+                ImGui.PushStyleColor(ImGuiCol.Header, CoPilot.instance.Settings.CorruptingFeverEnabled ? green : red);
+                ImGui.PushID(27);
+                if (ImGui.TreeNodeEx("Corrupting Fever", collapsingHeaderFlags))
+                {
+                    CoPilot.instance.Settings.CorruptingFeverEnabled.Value =
+                        ImGuiExtension.Checkbox("Enabled", CoPilot.instance.Settings.CorruptingFeverEnabled.Value);
+                    CoPilot.instance.Settings.CorruptingFeverRange.Value =
+                        ImGuiExtension.IntSlider("Range", CoPilot.instance.Settings.CorruptingFeverRange);
+                    CoPilot.instance.Settings.CorruptingFeverMinAny.Value =
+                        ImGuiExtension.IntSlider("min Enemy Any", CoPilot.instance.Settings.CorruptingFeverMinAny);
+                    CoPilot.instance.Settings.CorruptingFeverMinRare.Value =
+                        ImGuiExtension.IntSlider("min Enemy Rare", CoPilot.instance.Settings.CorruptingFeverMinRare);
+                    CoPilot.instance.Settings.CorruptingFeverMinUnique.Value = ImGuiExtension.IntSlider("min Enemy Unique", CoPilot.instance.Settings.CorruptingFeverMinUnique);
+                    CoPilot.instance.Settings.CorruptingFeverCooldown.Value = ImGuiExtension.IntSlider("cooldown in milliseconds", CoPilot.instance.Settings.CorruptingFeverCooldown);
+                }
+            }
+            catch (Exception e)
+            {
+                CoPilot.instance.LogError(e.ToString());
+            }
+
             try
             {
                 ImGui.PushStyleColor(ImGuiCol.Header, CoPilot.instance.Settings.minesEnabled ? green : red);

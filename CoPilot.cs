@@ -623,6 +623,32 @@ namespace CoPilot
 
                     #endregion
 
+                    #region Corrupting Fever
+
+                    if (Settings.CorruptingFeverEnabled)
+                        try
+                        {
+                            if (skill.Id == SkillInfo.corruptingFever.Id)
+                            {
+                                if (!buffs.Exists(b => b.Name == SkillInfo.corruptingFever.BuffName)
+                                 && SkillInfo.ManageCooldown(SkillInfo.corruptingFever, skill)
+                                 && MonsterCheck(
+                                        Settings.CorruptingFeverRange,
+                                        Settings.CorruptingFeverMinAny,
+                                        Settings.CorruptingFeverMinRare,
+                                        Settings.CorruptingFeverMinUnique))
+                                {
+                                    Keyboard.KeyPress(GetSkillInputKey(skill.SkillSlotIndex));
+                                }
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            LogError(e.ToString());
+                        }
+
+                    #endregion
+
                     #region Auto Summon
 
                     if (Settings.autoSummonEnabled)

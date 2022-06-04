@@ -173,6 +173,16 @@ namespace CoPilot
 
         #endregion
 
+        #region CorruptingFever
+
+        public ToggleNode CorruptingFeverEnabled = new ToggleNode(false);
+        public RangeNode<int> CorruptingFeverRange = new RangeNode<int>(800, 300, 3000);
+        public RangeNode<int> CorruptingFeverMinAny = new RangeNode<int>(1, 0, 50);
+        public RangeNode<int> CorruptingFeverMinRare = new RangeNode<int>(0, 0, 50);
+        public RangeNode<int> CorruptingFeverMinUnique = new RangeNode<int>(0, 0, 50);
+
+        #endregion
+
         #region Offerings
 
         public ToggleNode offeringsEnabled = new ToggleNode(false);
