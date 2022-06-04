@@ -333,6 +333,7 @@ namespace CoPilot
                 if (Settings.debugMode)
                 {
                     Graphics.DrawText("Enemys: " + enemys.Count, new Vector2(100, 120), Color.White);
+                    Graphics.DrawText("Buffs: " + String.Join(", ", buffs), new Vector2(200, 120), Color.White);
                 }
                 
                 if (Settings.offeringsEnabled || Settings.autoZombieEnabled || Settings.generalCryEnabled)
