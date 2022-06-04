@@ -632,16 +632,19 @@ namespace CoPilot
                         {
                             if (skill.Id == SkillInfo.corruptingFever.Id)
                             {
-                                if (!buffs.Exists(b => b.Name.Contains("blood_surge") || b.Name.Contains("corrupting_fever"))
-                                 && SkillInfo.ManageCooldown(SkillInfo.corruptingFever, skill)
-                                 && MonsterCheck(
-                                        Settings.CorruptingFeverRange,
-                                        Settings.CorruptingFeverMinAny,
-                                        Settings.CorruptingFeverMinRare,
-                                        Settings.CorruptingFeverMinUnique))
-                                {
-                                    Keyboard.KeyPress(GetSkillInputKey(skill.SkillSlotIndex));
-                                    SkillInfo.corruptingFever.Cooldown = 100;
+
+                                if ((!Settings.corruptingFeverReqFullHealth || this.player.HPPercentage > 0.999f) {
+                                    if (!buffs.Exists(b => b.Name.Contains("blood_surge") || b.Name.Contains("corrupting_fever"))
+                                     && SkillInfo.ManageCooldown(SkillInfo.corruptingFever, skill)
+                                     && MonsterCheck(
+                                            Settings.CorruptingFeverRange,
+                                            Settings.CorruptingFeverMinAny,
+                                            Settings.CorruptingFeverMinRare,
+                                            Settings.CorruptingFeverMinUnique))
+                                    {
+                                        Keyboard.KeyPress(GetSkillInputKey(skill.SkillSlotIndex));
+                                        SkillInfo.corruptingFever.Cooldown = 100;
+                                    }
                                 }
                             }
                         }
