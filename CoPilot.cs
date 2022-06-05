@@ -633,8 +633,8 @@ namespace CoPilot
                             if (skill.Id == SkillInfo.corruptingFever.Id)
                             {
 
-                                if (!Settings.CorruptingFeverReqFullHealth || this.player.HPPercentage > 0.999f) {
-                                    if (!buffs.Exists(b => b.Name.Contains("blood_surge") || b.Name.Contains("corrupting_fever"))
+                                if (!Settings.CorruptingFeverReqFullHealth || this.player.HPPercentage > 0.9f) {
+                                    if (!buffs.Exists(b => b.Name == SkillInfo.corruptingFever.BuffName)
                                      && SkillInfo.ManageCooldown(SkillInfo.corruptingFever, skill)
                                      && MonsterCheck(
                                             Settings.CorruptingFeverRange,
