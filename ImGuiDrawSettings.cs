@@ -509,7 +509,7 @@ namespace CoPilot
                         ImGuiExtension.Checkbox("Enabled", CoPilot.instance.Settings.phaserunEnabled.Value);
                     CoPilot.instance.Settings.phaserunUseLifeTap.Value = ImGuiExtension.Checkbox("Lifetap mode",
                         CoPilot.instance.Settings.phaserunUseLifeTap.Value);
-                    CoPilot.instance.Settings.phaserunUseWhileAttacking.Value = ImGuiExtension.Checkbox("Use while attacking / channeling",
+                    CoPilot.instance.Settings.phaserunUseWhileAttacking.Value = ImGuiExtension.Checkbox("Use while attacking / channelling",
                         CoPilot.instance.Settings.phaserunUseWhileAttacking.Value);
                 }
             }
