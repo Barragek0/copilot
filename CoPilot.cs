@@ -487,16 +487,18 @@ namespace CoPilot
                         {
                             if (skill.Id == SkillInfo.witherStep.Id)
                                 if (SkillInfo.ManageCooldown(SkillInfo.witherStep, skill))
-                                    if (!isAttacking && isMoving)
+                                    if (isMoving)
                                     {
-                                        Keyboard.KeyPress(GetSkillInputKey(skill.SkillSlotIndex));
-                                        SkillInfo.phaserun.Cooldown = 250;
+                                        if (!isAttacking || (isAttacking && Settings.phaserunUseWhileAttacking)) {
+                                            Keyboard.KeyPress(GetSkillInputKey(skill.SkillSlotIndex));
+                                            SkillInfo.phaserun.Cooldown = 250;
+                                        }
                                     }
 
                             if (skill.Id == SkillInfo.phaserun.Id)
                                 if (SkillInfo.ManageCooldown(SkillInfo.phaserun, skill))
                                 {
-                                    if (!Settings.phaserunUseLifeTap && !isAttacking && isMoving &&
+                                    if (!Settings.phaserunUseLifeTap && (!isAttacking || (isAttacking && Settings.phaserunUseWhileAttacking)) && isMoving &&
                                         !buffs.Exists(b => b.Name == SkillInfo.witherStep.BuffName) &&
                                         !buffs.Exists(b =>
                                             b.Name == SkillInfo.phaserun.BuffName && b.Timer > 0.1))

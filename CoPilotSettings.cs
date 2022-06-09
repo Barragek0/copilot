@@ -85,6 +85,7 @@ namespace CoPilot
 
         public ToggleNode phaserunEnabled = new ToggleNode(false);
         public ToggleNode phaserunUseLifeTap = new ToggleNode(false);
+        public ToggleNode phaserunUseWhileAttacking = new ToggleNode(false);
 
         #endregion
 
