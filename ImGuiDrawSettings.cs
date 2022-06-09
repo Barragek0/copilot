@@ -503,14 +503,14 @@ namespace CoPilot
                 // Phaserun
                 ImGui.PushStyleColor(ImGuiCol.Header, CoPilot.instance.Settings.phaserunEnabled ? green : red);
                 ImGui.PushID(11);
-                if (ImGui.TreeNodeEx("Phaserun / WitherStep", collapsingHeaderFlags))
+                if (ImGui.TreeNodeEx("Phaserun / Witherstep", collapsingHeaderFlags))
                 {
                     CoPilot.instance.Settings.phaserunEnabled.Value =
                         ImGuiExtension.Checkbox("Enabled", CoPilot.instance.Settings.phaserunEnabled.Value);
                     CoPilot.instance.Settings.phaserunUseLifeTap.Value = ImGuiExtension.Checkbox("Lifetap mode",
                         CoPilot.instance.Settings.phaserunUseLifeTap.Value);
-                    CoPilot.instance.Settings.phaserunUseLifeTap.Value = ImGuiExtension.Checkbox("Use while attacking",
-                        CoPilot.instance.Settings.phaserunUseLifeTap.Value);
+                    CoPilot.instance.Settings.phaserunUseWhileAttacking.Value = ImGuiExtension.Checkbox("Use while attacking / channeling",
+                        CoPilot.instance.Settings.phaserunUseWhileAttacking.Value);
                 }
             }
             catch (Exception e)
