@@ -54,7 +54,7 @@ namespace CoPilot
         [DllImport("user32.dll")]
         static extern IntPtr GetForegroundWindow();
         [DllImport("user32.dll")]
-        static extern int GetWindowText(IntPtr hwnd, System.Text.StringBuilder ss, int count);
+        static extern int GetWindowText(IntPtr hwnd, StringBuilder ss, int count);
 
         
 
