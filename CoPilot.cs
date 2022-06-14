@@ -11,7 +11,6 @@ using ExileCore.PoEMemory.MemoryObjects;
 using ExileCore.Shared;
 using ExileCore.Shared.Enums;
 using SharpDX;
-using System.Runtime.InteropServices;
 
 namespace CoPilot
 {
