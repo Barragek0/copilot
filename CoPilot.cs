@@ -288,7 +288,7 @@ namespace CoPilot
             }
         }
 
-        private string ActiveWindowTitle()
+        private static string ActiveWindowTitle()
         {
             const int nChar = 256;
             StringBuilder ss = new StringBuilder(nChar);
