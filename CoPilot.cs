@@ -11,6 +11,7 @@ using ExileCore.PoEMemory.MemoryObjects;
 using ExileCore.Shared;
 using ExileCore.Shared.Enums;
 using SharpDX;
+using System.Runtime.InteropServices;
 
 namespace CoPilot
 {
@@ -49,6 +50,11 @@ namespace CoPilot
         internal List<ActorSkill> skills = new List<ActorSkill>();
         private bool updateBladeBlast;
         private List<ActorVaalSkill> vaalSkills = new List<ActorVaalSkill>();
+
+        [DllImport("user32.dll")]
+        static extern IntPtr GetForegroundWindow();
+        [DllImport("user32.dll")]
+        static extern int GetWindowText(IntPtr hwnd, StringBuilder ss, int count);
 
         
 
@@ -282,6 +288,16 @@ namespace CoPilot
             }
         }
 
+        private string ActiveWindowTitle()
+        {
+            const int nChar = 256;
+            StringBuilder ss = new StringBuilder(nChar);
+            IntPtr handle = IntPtr.Zero;
+            handle = GetForegroundWindow();
+            if (GetWindowText(handle, ss, nChar) > 0) return ss.ToString();
+            else return "";
+        }
+
         public override void Render()
         {
             try
@@ -318,7 +334,8 @@ namespace CoPilot
                 vaalSkills = localPlayer.GetComponent<Actor>().ActorVaalSkills;
                 playerPosition = localPlayer.Pos;
 
-                if (GameController.Area.CurrentArea.IsHideout || GameController.Area.CurrentArea.IsTown ||
+                if (ActiveWindowTitle.IndexOf("Path of Exile", 0, StringComparison.CurrentCultureIgnoreCase) == -1 ||
+                    GameController.Area.CurrentArea.IsHideout || GameController.Area.CurrentArea.IsTown ||
                     /*GameController.IngameState.IngameUi.StashElement.IsVisible ||*/ // 3.15 Null
                     GameController.IngameState.IngameUi.NpcDialog.IsVisible ||
                     GameController.IngameState.IngameUi.SellWindow.IsVisible || MenuWindow.IsOpened ||
