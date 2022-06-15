@@ -353,7 +353,19 @@ namespace CoPilot
                     /*GameController.IngameState.IngameUi.StashElement.IsVisible ||*/ // 3.15 Null
                     GameController.IngameState.IngameUi.NpcDialog.IsVisible ||
                     GameController.IngameState.IngameUi.SellWindow.IsVisible || MenuWindow.IsOpened ||
-                    !GameController.InGame || GameController.IsLoading) return;
+                    !GameController.InGame || GameController.IsLoading)
+                {
+
+                    Graphics.DrawText("Return reason: " + (ActiveWindowTitle().IndexOf("Path of Exile", 0, StringComparison.CurrentCultureIgnoreCase) == -1 ? "POE Not Active Window" : 
+                        GameController.Area.CurrentArea.IsHideout ? "In hideout" : 
+                        GameController.Area.CurrentArea.IsTown ? "In town" : 
+                        GameController.IngameState.IngameUi.NpcDialog.IsVisible ? "NPC Dialog is visible" :
+                        GameController.IngameState.IngameUi.SellWindow.IsVisible ? "Sell window is visible" :
+                        MenuWindow.IsOpened ? "Menu window is opened" :
+                        !GameController.InGame ? "Not in-game" :
+                        GameController.IsLoading ? "Game is loading" : "Unknown"), new Vector2(10, 280 + offset), Color.White);
+                    return;
+                }
                 
                 enemys = GameController.EntityListWrapper.ValidEntitiesByType[EntityType.Monster].Where(x =>
                     x != null && x.IsAlive && x.IsHostile && x.HasComponent<Targetable>() &&
