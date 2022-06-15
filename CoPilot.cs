@@ -333,6 +333,7 @@ namespace CoPilot
                 skills = localPlayer.GetComponent<Actor>().ActorSkills;
                 vaalSkills = localPlayer.GetComponent<Actor>().ActorVaalSkills;
                 playerPosition = localPlayer.Pos;
+                int offset = (20 * (skills.Count));
                 if (Settings.debugMode)
                 {
                     Graphics.DrawText("localPlayer: " + localPlayer, new Vector2(10, 120), Color.White);
@@ -340,10 +341,10 @@ namespace CoPilot
                     Graphics.DrawText("isAttacking: " + isAttacking, new Vector2(10, 160), Color.White);
                     Graphics.DrawText("isCasting: " + isCasting, new Vector2(10, 180), Color.White);
                     Graphics.DrawText("isMoving: " + isMoving, new Vector2(10, 200), Color.White);
-                    Graphics.DrawText("Buffs: \n", new Vector2(10, 300), Color.White);
-                    Graphics.DrawText("skills: " + String.Join(" | ", skills), new Vector2(10, 220), Color.White);
-                    Graphics.DrawText("vaalSkills: " + String.Join(" | ", vaalSkills), new Vector2(10, 240), Color.White);
-                    Graphics.DrawText("playerPosition: " + playerPosition, new Vector2(10, 260), Color.White);
+                    Graphics.DrawText("Skills: " + String.Join(" | ", skills), new Vector2(10, 220), Color.White);
+                    Graphics.DrawText("VaalSkills: " + String.Join(" | ", vaalSkills), new Vector2(10, 240 + offset), Color.White);
+                    Graphics.DrawText("PlayerPosition: " + playerPosition, new Vector2(10, 260 + offset), Color.White);
+                    Graphics.DrawText("ActiveWindowTitle: " + ActiveWindowTitle(), new Vector2(10, 280 + offset), Color.White);
                 }
 
                 if (ActiveWindowTitle().IndexOf("Path of Exile", 0, StringComparison.CurrentCultureIgnoreCase) == -1 ||
@@ -361,9 +362,9 @@ namespace CoPilot
                         GameController.Game.IngameState.Camera.WorldToScreen(x.Pos))).ToList();
                 if (Settings.debugMode)
                 {
-                    Graphics.DrawText("Enemies: " + enemys.Count, new Vector2(10, 280), Color.White);
-                    Graphics.DrawText("Buffs: \n", new Vector2(10, 300), Color.White);
-                    Graphics.DrawText(String.Join("\n", buffs), new Vector2(10, 320), Color.White);
+                    Graphics.DrawText("Enemies: " + enemys.Count, new Vector2(10, 300 + offset), Color.White);
+                    Graphics.DrawText("Buffs: \n", new Vector2(10, 320 + offset), Color.White);
+                    Graphics.DrawText(String.Join("\n", buffs), new Vector2(10, 340 + offset), Color.White);
                 }
                 
                 if (Settings.offeringsEnabled || Settings.autoZombieEnabled || Settings.generalCryEnabled)
