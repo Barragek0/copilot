@@ -348,20 +348,21 @@ namespace CoPilot
 
                 if (ActiveWindowTitle().IndexOf("Path of Exile", 0, StringComparison.CurrentCultureIgnoreCase) == -1 ||
                     GameController.Area.CurrentArea.IsHideout || GameController.Area.CurrentArea.IsTown ||
-                    /*GameController.IngameState.IngameUi.StashElement.IsVisible ||*/ // 3.15 Null
+                    GameController.IngameState.IngameUi.StashElement.IsVisible ||
                     GameController.IngameState.IngameUi.NpcDialog.IsVisible ||
                     GameController.IngameState.IngameUi.SellWindow.IsVisible || MenuWindow.IsOpened ||
                     !GameController.InGame || GameController.IsLoading)
                 {
-
-                    Graphics.DrawText("Return reason: " + (ActiveWindowTitle().IndexOf("Path of Exile", 0, StringComparison.CurrentCultureIgnoreCase) == -1 ? "POE Not Active Window" : 
-                        GameController.Area.CurrentArea.IsHideout ? "In hideout" : 
-                        GameController.Area.CurrentArea.IsTown ? "In town" : 
-                        GameController.IngameState.IngameUi.NpcDialog.IsVisible ? "NPC Dialog is visible" :
-                        GameController.IngameState.IngameUi.SellWindow.IsVisible ? "Sell window is visible" :
-                        MenuWindow.IsOpened ? "Menu window is opened" :
-                        !GameController.InGame ? "Not in-game" :
-                        GameController.IsLoading ? "Game is loading" : "Unknown"), new Vector2(10, 260 + offset), Color.White);
+                    if (Settings.debugMode)
+                        Graphics.DrawText("Return reason: " + (ActiveWindowTitle().IndexOf("Path of Exile", 0, StringComparison.CurrentCultureIgnoreCase) == -1 ? "POE Not Active Window" : 
+                            GameController.Area.CurrentArea.IsHideout ? "In hideout" : 
+                            GameController.Area.CurrentArea.IsTown ? "In town" :
+                            GameController.IngameState.IngameUi.StashElement.IsVisible ? "Stash element is visible" :
+                            GameController.IngameState.IngameUi.NpcDialog.IsVisible ? "NPC Dialog is visible" :
+                            GameController.IngameState.IngameUi.SellWindow.IsVisible ? "Sell window is visible" :
+                            MenuWindow.IsOpened ? "Settings window is opened" :
+                            !GameController.InGame ? "Not in-game" :
+                            GameController.IsLoading ? "Game is loading" : "Unknown"), new Vector2(10, 260 + offset), Color.White);
                     return;
                 }
                 
