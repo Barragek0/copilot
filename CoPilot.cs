@@ -376,6 +376,7 @@ namespace CoPilot
                 {
                     Graphics.DrawText("Enemies: " + enemys.Count, new Vector2(1500, 200), Color.White);
                     Graphics.DrawText("Buffs: \n" + String.Join("\n", buffs), new Vector2(1500, 220), Color.White);
+                    offset = (20 * buffs.Count);
                 }
                 
                 if (Settings.offeringsEnabled || Settings.autoZombieEnabled || Settings.generalCryEnabled)
