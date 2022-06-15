@@ -545,30 +545,16 @@ namespace CoPilot
                         try
                         {
                             if (skill.Id == SkillInfo.witherStep.Id)
-                            {
                                 if (SkillInfo.ManageCooldown(SkillInfo.witherStep, skill))
-                                {
-                                    if (!isAttacking && isMoving || (isAttacking && Settings.phaserunUseWhileAttacking))
-                                    {
-                                        Graphics.DrawText("Casting witherstep", new Vector2(1500, 260 + (20 * skillPos) + offset), Color.White);
-                                        Keyboard.KeyPress(GetSkillInputKey(skill.SkillSlotIndex));
-                                        SkillInfo.phaserun.Cooldown = 250;
-                                    }
-                                }
-
-                            } else
-                            {
-                                if (Settings.debugMode)
-                                {
-                                    Graphics.DrawText("Id: "+skill.Id+" - Witherstep id: "+SkillInfo.witherStep.Id, new Vector2(1500, 260 + (20 * skillPos) + offset), Color.White);
-                                    skillPos++;
-                                }
-                            }
+                                        if (!isAttacking && !isCasting && isMoving || ((isAttacking || isCasting) && Settings.phaserunUseWhileAttacking)) {
+                                            Keyboard.KeyPress(GetSkillInputKey(skill.SkillSlotIndex));
+                                            SkillInfo.phaserun.Cooldown = 250;
+                                        }
 
                             if (skill.Id == SkillInfo.phaserun.Id)
                                 if (SkillInfo.ManageCooldown(SkillInfo.phaserun, skill))
                                 {
-                                    if (!Settings.phaserunUseLifeTap && (!isAttacking && isMoving || (isAttacking && Settings.phaserunUseWhileAttacking)) &&
+                                    if (!Settings.phaserunUseLifeTap && (!isAttacking && !isCasting && isMoving || ((isAttacking || isCasting) && Settings.phaserunUseWhileAttacking)) &&
                                         !buffs.Exists(b => b.Name == SkillInfo.witherStep.BuffName) &&
                                         !buffs.Exists(b =>
                                             b.Name == SkillInfo.phaserun.BuffName && b.Timer > 0.1))
