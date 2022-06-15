@@ -374,9 +374,8 @@ namespace CoPilot
                         GameController.Game.IngameState.Camera.WorldToScreen(x.Pos))).ToList();
                 if (Settings.debugMode)
                 {
-                    Graphics.DrawText("Enemies: " + enemys.Count, new Vector2(800, 120), Color.White);
-                    Graphics.DrawText("Buffs: \n", new Vector2(800, 140), Color.White);
-                    Graphics.DrawText(String.Join("\n", buffs), new Vector2(800, 160), Color.White);
+                    Graphics.DrawText("Enemies: " + enemys.Count, new Vector2(1500, 200), Color.White);
+                    Graphics.DrawText("Buffs: \n" + String.Join("\n", buffs), new Vector2(1500, 220), Color.White);
                 }
                 
                 if (Settings.offeringsEnabled || Settings.autoZombieEnabled || Settings.generalCryEnabled)
@@ -439,9 +438,19 @@ namespace CoPilot
                     /*GameController.IngameState.IngameUi.ChatBoxRoot.Parent.Parent.Parent.GetChildAtIndex(3).IsVisible || */ // 3.15 Bugged 
                     !GameController.IsForeGroundCache)
                     return;
-                
+
+                int skillPos = 0;
                 foreach (var skill in skills.Where(skill => skill.IsOnSkillBar && skill.SkillSlotIndex >= 1 && skill.SkillSlotIndex != 2 && skill.CanBeUsed))
                 {
+                    if (!skill.IsOnSkillBar || skill.SkillSlotIndex < 1 || skill.SkillSlotIndex == 2 || !skill.CanBeUsed)
+                    {
+                        Graphics.DrawText("Skill issue: " + 
+                            (!skill.IsOnSkillBar ? "Not on skill bar" : 
+                            skill.SkillSlotIndex < 1 ? "Skill slot index < 1" : 
+                            skill.SkillSlotIndex == 2 ? "Skill slot index == 2" : 
+                            !skill.CanBeUsed ? "Skill cannot be used" : "Unknown"), new Vector2(1500, 240 + (20 * skillPos)), Color.White);
+                        skillPos++;
+                    }
                     #region Ranged Trigger -> Mirage Archer / Frenzy
 
                     if (Settings.rangedTriggerEnabled)
