@@ -360,9 +360,9 @@ namespace CoPilot
                         GameController.Game.IngameState.Camera.WorldToScreen(x.Pos))).ToList();
                 if (Settings.debugMode)
                 {
-                    Graphics.DrawText("Enemies: " + enemys.Count, new Vector2(50, 120), Color.White);
-                    Graphics.DrawText("Buffs: \n", new Vector2(50, 140), Color.White);
-                    Graphics.DrawText(String.Join("\n", buffs), new Vector2(50, 160), Color.White);
+                    Graphics.DrawText("Enemies: " + enemys.Count, new Vector2(10, 280), Color.White);
+                    Graphics.DrawText("Buffs: \n", new Vector2(10, 300), Color.White);
+                    Graphics.DrawText(String.Join("\n", buffs), new Vector2(10, 320), Color.White);
                 }
                 
                 if (Settings.offeringsEnabled || Settings.autoZombieEnabled || Settings.generalCryEnabled)
