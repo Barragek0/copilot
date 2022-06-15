@@ -340,8 +340,9 @@ namespace CoPilot
                     Graphics.DrawText("isAttacking: " + isAttacking, new Vector2(10, 160), Color.White);
                     Graphics.DrawText("isCasting: " + isCasting, new Vector2(10, 180), Color.White);
                     Graphics.DrawText("isMoving: " + isMoving, new Vector2(10, 200), Color.White);
-                    Graphics.DrawText("skills: " + skills, new Vector2(10, 220), Color.White);
-                    Graphics.DrawText("vaalSkills: " + vaalSkills, new Vector2(10, 240), Color.White);
+                    Graphics.DrawText("Buffs: \n", new Vector2(10, 300), Color.White);
+                    Graphics.DrawText("skills: " + String.Join(" | ", skills), new Vector2(10, 220), Color.White);
+                    Graphics.DrawText("vaalSkills: " + String.Join(" | ", vaalSkills), new Vector2(10, 240), Color.White);
                     Graphics.DrawText("playerPosition: " + playerPosition, new Vector2(10, 260), Color.White);
                 }
 
@@ -515,7 +516,7 @@ namespace CoPilot
                         {
                             if (skill.Id == SkillInfo.witherStep.Id)
                                 if (SkillInfo.ManageCooldown(SkillInfo.witherStep, skill))
-                                        if (!isAttacking && isMoving || (isAttacking && Settings.phaserunUseWhileAttacking)) {
+                                        if (!isAttacking && isMoving || ((isAttacking || isCasting) && Settings.phaserunUseWhileAttacking)) {
                                             Keyboard.KeyPress(GetSkillInputKey(skill.SkillSlotIndex));
                                             SkillInfo.phaserun.Cooldown = 250;
                                         }
@@ -523,7 +524,7 @@ namespace CoPilot
                             if (skill.Id == SkillInfo.phaserun.Id)
                                 if (SkillInfo.ManageCooldown(SkillInfo.phaserun, skill))
                                 {
-                                    if (!Settings.phaserunUseLifeTap && (!isAttacking && isMoving || (isAttacking && Settings.phaserunUseWhileAttacking)) &&
+                                    if (!Settings.phaserunUseLifeTap && (!isAttacking && isMoving || ((isAttacking || isCasting) && Settings.phaserunUseWhileAttacking)) &&
                                         !buffs.Exists(b => b.Name == SkillInfo.witherStep.BuffName) &&
                                         !buffs.Exists(b =>
                                             b.Name == SkillInfo.phaserun.BuffName && b.Timer > 0.1))
