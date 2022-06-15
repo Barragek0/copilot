@@ -341,8 +341,9 @@ namespace CoPilot
                     Graphics.DrawText("isAttacking: " + isAttacking, new Vector2(10, 160), Color.White);
                     Graphics.DrawText("isCasting: " + isCasting, new Vector2(10, 180), Color.White);
                     Graphics.DrawText("isMoving: " + isMoving, new Vector2(10, 200), Color.White);
-                    Graphics.DrawText("Skills: " + String.Join(" | ", skills), new Vector2(10, 220), Color.White);
-                    Graphics.DrawText("VaalSkills: " + String.Join(" | ", vaalSkills), new Vector2(10, 240 + offset), Color.White);
+                    Graphics.DrawText("Skills: \n" + String.Join("\n", skills), new Vector2(10, 220), Color.White);
+                    Graphics.DrawText("VaalSkills: " + String.Join("\n", vaalSkills), new Vector2(10, 240 + offset), Color.White);
+                    offset = offset + (vaalSkills.Count * 20);
                     Graphics.DrawText("PlayerPosition: " + playerPosition, new Vector2(10, 260 + offset), Color.White);
                     Graphics.DrawText("ActiveWindowTitle: " + ActiveWindowTitle(), new Vector2(10, 280 + offset), Color.White);
                 }
@@ -362,9 +363,9 @@ namespace CoPilot
                         GameController.Game.IngameState.Camera.WorldToScreen(x.Pos))).ToList();
                 if (Settings.debugMode)
                 {
-                    Graphics.DrawText("Enemies: " + enemys.Count, new Vector2(10, 300 + offset), Color.White);
-                    Graphics.DrawText("Buffs: \n", new Vector2(10, 320 + offset), Color.White);
-                    Graphics.DrawText(String.Join("\n", buffs), new Vector2(10, 340 + offset), Color.White);
+                    Graphics.DrawText("Enemies: " + enemys.Count, new Vector2(800, 120), Color.White);
+                    Graphics.DrawText("Buffs: \n", new Vector2(800, 140), Color.White);
+                    Graphics.DrawText(String.Join("\n", buffs), new Vector2(800, 160), Color.White);
                 }
                 
                 if (Settings.offeringsEnabled || Settings.autoZombieEnabled || Settings.generalCryEnabled)
