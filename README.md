@@ -1,5 +1,9 @@
 # CoPilot
 
+Copilot with a few improvements, added corrupting fever, won't try to press keys while poe isn't the active window, updated for 3.18.1 changes to ActorSkill.InternalName.
+
+-- Original Readme from here --
+
 Designed to improve QOL while playing POE with Exilehud/Poehelper.  
 Automated use of Skills, with as few interferance for User Input as possible.  
   
