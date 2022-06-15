@@ -336,16 +336,14 @@ namespace CoPilot
                 int offset = (20 * (skills.Count));
                 if (Settings.debugMode)
                 {
-                    Graphics.DrawText("localPlayer: " + localPlayer, new Vector2(10, 120), Color.White);
-                    Graphics.DrawText("player: " + player, new Vector2(10, 140), Color.White);
-                    Graphics.DrawText("isAttacking: " + isAttacking, new Vector2(10, 160), Color.White);
-                    Graphics.DrawText("isCasting: " + isCasting, new Vector2(10, 180), Color.White);
-                    Graphics.DrawText("isMoving: " + isMoving, new Vector2(10, 200), Color.White);
-                    Graphics.DrawText("Skills: \n" + String.Join("\n", skills), new Vector2(10, 220), Color.White);
-                    Graphics.DrawText("VaalSkills: " + String.Join("\n", vaalSkills), new Vector2(10, 240 + offset), Color.White);
+                    Graphics.DrawText("isAttacking: " + isAttacking, new Vector2(10, 120), Color.White);
+                    Graphics.DrawText("isCasting: " + isCasting, new Vector2(10, 140), Color.White);
+                    Graphics.DrawText("isMoving: " + isMoving, new Vector2(10, 160), Color.White);
+                    Graphics.DrawText("Skills: \n" + String.Join("\n", skills), new Vector2(10, 180), Color.White);
+                    Graphics.DrawText("VaalSkills: \n" + String.Join("\n", vaalSkills), new Vector2(10, 200 + offset), Color.White);
                     offset = offset + (vaalSkills.Count * 20);
-                    Graphics.DrawText("PlayerPosition: " + playerPosition, new Vector2(10, 260 + offset), Color.White);
-                    Graphics.DrawText("ActiveWindowTitle: " + ActiveWindowTitle(), new Vector2(10, 280 + offset), Color.White);
+                    Graphics.DrawText("PlayerPosition: " + playerPosition, new Vector2(10, 220 + offset), Color.White);
+                    Graphics.DrawText("ActiveWindowTitle: " + ActiveWindowTitle(), new Vector2(10, 240 + offset), Color.White);
                 }
 
                 if (ActiveWindowTitle().IndexOf("Path of Exile", 0, StringComparison.CurrentCultureIgnoreCase) == -1 ||
@@ -363,7 +361,7 @@ namespace CoPilot
                         GameController.IngameState.IngameUi.SellWindow.IsVisible ? "Sell window is visible" :
                         MenuWindow.IsOpened ? "Menu window is opened" :
                         !GameController.InGame ? "Not in-game" :
-                        GameController.IsLoading ? "Game is loading" : "Unknown"), new Vector2(10, 280 + offset), Color.White);
+                        GameController.IsLoading ? "Game is loading" : "Unknown"), new Vector2(10, 260 + offset), Color.White);
                     return;
                 }
                 
