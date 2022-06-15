@@ -447,12 +447,15 @@ namespace CoPilot
                     {
                         if (!skill.IsOnSkillBar || skill.SkillSlotIndex < 1 || skill.SkillSlotIndex == 2 || !skill.CanBeUsed)
                         {
-                            Graphics.DrawText("Can't cast skill '" + skill.Name + "': " +
-                                (!skill.IsOnSkillBar ? "Not on skill bar" :
-                                skill.SkillSlotIndex < 1 ? "Skill slot index < 1" :
-                                skill.SkillSlotIndex == 2 ? "Skill slot index == 2" :
-                                !skill.CanBeUsed ? "Skill cannot be used" : "Unknown"), new Vector2(1500, 240 + (20 * skillPos) + offset), Color.White);
-                            skillPos++;
+                            if (Settings.debugMode)
+                            {
+                                Graphics.DrawText("Can't cast skill '" + skill.Name + "': " +
+                                    (!skill.IsOnSkillBar ? "Not on skill bar" :
+                                    skill.SkillSlotIndex < 1 ? "Skill slot index < 1" :
+                                    skill.SkillSlotIndex == 2 ? "Skill slot index == 2" :
+                                    !skill.CanBeUsed ? "Skill cannot be used" : "Unknown"), new Vector2(1500, 240 + (20 * skillPos) + offset), Color.White);
+                                skillPos++;
+                            }
                             continue;
                         }
                     }
@@ -542,16 +545,30 @@ namespace CoPilot
                         try
                         {
                             if (skill.Id == SkillInfo.witherStep.Id)
+                            {
                                 if (SkillInfo.ManageCooldown(SkillInfo.witherStep, skill))
-                                        if (!isAttacking && isMoving || ((isAttacking || isCasting) && Settings.phaserunUseWhileAttacking)) {
-                                            Keyboard.KeyPress(GetSkillInputKey(skill.SkillSlotIndex));
-                                            SkillInfo.phaserun.Cooldown = 250;
-                                        }
+                                {
+                                    if (!isAttacking && isMoving || (isAttacking && Settings.phaserunUseWhileAttacking))
+                                    {
+                                        Graphics.DrawText("Casting witherstep", new Vector2(1500, 260 + (20 * skillPos) + offset), Color.White);
+                                        Keyboard.KeyPress(GetSkillInputKey(skill.SkillSlotIndex));
+                                        SkillInfo.phaserun.Cooldown = 250;
+                                    }
+                                }
+
+                            } else
+                            {
+                                if (Settings.debugMode)
+                                {
+                                    Graphics.DrawText("Id: "+skill.Id+" - Witherstep id: "+SkillInfo.witherStep.Id, new Vector2(1500, 260 + (20 * skillPos) + offset), Color.White);
+                                    skillPos++;
+                                }
+                            }
 
                             if (skill.Id == SkillInfo.phaserun.Id)
                                 if (SkillInfo.ManageCooldown(SkillInfo.phaserun, skill))
                                 {
-                                    if (!Settings.phaserunUseLifeTap && (!isAttacking && isMoving || ((isAttacking || isCasting) && Settings.phaserunUseWhileAttacking)) &&
+                                    if (!Settings.phaserunUseLifeTap && (!isAttacking && isMoving || (isAttacking && Settings.phaserunUseWhileAttacking)) &&
                                         !buffs.Exists(b => b.Name == SkillInfo.witherStep.BuffName) &&
                                         !buffs.Exists(b =>
                                             b.Name == SkillInfo.phaserun.BuffName && b.Timer > 0.1))
