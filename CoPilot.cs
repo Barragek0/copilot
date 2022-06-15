@@ -440,7 +440,7 @@ namespace CoPilot
                     return;
 
                 int skillPos = 0;
-                foreach (var skill in skills.Where(skill => skill.IsOnSkillBar && skill.SkillSlotIndex >= 1 && skill.SkillSlotIndex != 2 && skill.CanBeUsed))
+                foreach (var skill in skills)
                 {
                     if (!skill.IsOnSkillBar || skill.SkillSlotIndex < 1 || skill.SkillSlotIndex == 2 || !skill.CanBeUsed)
                     {
