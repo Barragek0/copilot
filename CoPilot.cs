@@ -333,6 +333,17 @@ namespace CoPilot
                 skills = localPlayer.GetComponent<Actor>().ActorSkills;
                 vaalSkills = localPlayer.GetComponent<Actor>().ActorVaalSkills;
                 playerPosition = localPlayer.Pos;
+                if (Settings.debugMode)
+                {
+                    Graphics.DrawText("localPlayer: " + localPlayer, new Vector2(10, 120), Color.White);
+                    Graphics.DrawText("player: " + player, new Vector2(10, 140), Color.White);
+                    Graphics.DrawText("isAttacking: " + isAttacking, new Vector2(10, 160), Color.White);
+                    Graphics.DrawText("isCasting: " + isCasting, new Vector2(10, 180), Color.White);
+                    Graphics.DrawText("isMoving: " + isMoving, new Vector2(10, 200), Color.White);
+                    Graphics.DrawText("skills: " + skills, new Vector2(10, 220), Color.White);
+                    Graphics.DrawText("vaalSkills: " + vaalSkills, new Vector2(10, 240), Color.White);
+                    Graphics.DrawText("playerPosition: " + playerPosition, new Vector2(10, 260), Color.White);
+                }
 
                 if (ActiveWindowTitle().IndexOf("Path of Exile", 0, StringComparison.CurrentCultureIgnoreCase) == -1 ||
                     GameController.Area.CurrentArea.IsHideout || GameController.Area.CurrentArea.IsTown ||
