@@ -913,7 +913,7 @@ namespace CoPilot
                             if (SkillInfo.ManageCooldown(SkillInfo.vaalSkill, skill))
                                 if (MonsterCheck(Settings.anyVaalTriggerRange, Settings.anyVaalMinAny,
                                     Settings.anyVaalMinRare, Settings.anyVaalMinUnique) && vaalSkills.Exists(x =>
-                                    x.VaalSkillDisplayName == skill.Name &&
+                                    x.VaalSkillSkillName == skill.Name &&
                                     x.CurrVaalSouls >= x.VaalSoulsPerUse))
                                     if (player.HPPercentage<= (float)Settings.anyVaalHpp ||
                                         player.MaxES > 0 && player.ESPercentage<
