@@ -182,10 +182,12 @@ namespace CoPilot
                         fleshOffering.BuffName = "active_offering";
                         break;
                     case "PhaseRun":
+                    case "NewPhaseRun":
                         phaserun.Id = skill.Id;
                         phaserun.BuffName = "new_phase_run";
                         break;
                     case "MoltenShell":
+                    case "MoltenShellBarrier":
                         moltenShell.Id = skill.Id;
                         moltenShell.BuffName = "fire_shield";
                         break;
@@ -206,42 +208,55 @@ namespace CoPilot
                         bloodRage.BuffName = "blood_rage";
                         break;
                     case "SummonChaosElemental":
+                    case "SummonChaosGolem":
                         chaosGolem.Id = skill.Id;
                         break;
                     case "SummonFireElemental":
+                    case "SummonFireGolem":
+                    case "SummonFlameGolem":
                         flameGolem.Id = skill.Id;
                         break;
                     case "SummonIceElemental":
+                    case "SummonIceGolem":
                         iceGolem.Id = skill.Id;
                         break;
                     case "SummonLightningGolem":
                         lightningGolem.Id = skill.Id;
                         break;
                     case "SummonRockGolem":
+                    case "SummonStoneGolem":
                         stoneGolem.Id = skill.Id;
                         break;
                     case "SummonBoneGolem":
+                    case "SummonCarrionGolem":
                         carrionGolem.Id = skill.Id;
                         break;
                     case "SummonBestialUrsa":
+                    case "SummonUrsaGolem":
+                    case "SummonUrsa":
                         ursaGolem.Id = skill.Id;
                         break;
                     case "FrostBoltNova":
+                    case "Vortex":
                         vortex.Id = skill.Id;
                         break;
                     case "DivineTempest":
+                    case "DivineIre":
                         divineIre.Id = skill.Id;
                         divineIre.BuffName = "divine_tempest_stage";
                         break;
                     case "VirulentArrow":
+                    case "ScourgeArrow":
                         scourgeArror.Id = skill.Id;
                         scourgeArror.BuffName = "virulent_arrow_counter";
                         break;
                     case "ChargedAttack":
+                    case "BladeFlurry":
                         bladeFlurry.Id = skill.Id;
                         bladeFlurry.BuffName = "charged_attack";
                         break;
                     case "CursePillar":
+                    case "DoedreEffigy":
                         doedreEffigy.Id = skill.Id;
                         break;
                     case "TempestShield":
@@ -249,6 +264,7 @@ namespace CoPilot
                         tempestShield.BuffName = "lightning_shield";
                         break;
                     case "SigilRecall":
+                    case "BrandRecall":
                         brandRecall.Id = skill.Id;
                         break;
                     case "Cyclone":
@@ -281,6 +297,8 @@ namespace CoPilot
                         bladeBlast.Id = skill.Id;
                         break;
                     case "SummonRelic":
+                    case "SummonHolyRelic":
+                    case "HolyRelic":
                         holyRelict.Id = skill.Id;
                         break;
                     case "Berserk":
@@ -298,6 +316,7 @@ namespace CoPilot
                         frenzy.Id = skill.Id;
                         break;
                     case "CorrosiveShroud":
+                    case "PlagueBearer":
                         plagueBearer.Id = skill.Id;
                         plagueBearer.BuffName = "corrosive_shroud";
                         break;
