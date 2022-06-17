@@ -453,7 +453,7 @@ namespace CoPilot
                                     (!skill.IsOnSkillBar ? "Not on skill bar" :
                                     skill.SkillSlotIndex < 1 ? "Skill slot index < 1" :
                                     skill.SkillSlotIndex == 2 ? "Skill slot index == 2" :
-                                    !skill.CanBeUsed ? "Skill cannot be used" : "Unknown"), new Vector2(800, 120 + offset), Color.White);
+                                    !skill.CanBeUsed ? "Skill cannot be used" : "Unknown"), new Vector2(800, 0 + offset), Color.White);
                                 offset = offset + 20;
                             }
                             continue;
@@ -914,9 +914,9 @@ namespace CoPilot
                             {
                                 foreach (ActorVaalSkill actorVaalSkill in vaalSkills)
                                 {
-                                    Graphics.DrawText("" + actorVaalSkill.VaalSkillSkillName + ", " + actorVaalSkill.VaalSkillDisplayName + ", " + actorVaalSkill.VaalSkillInternalName, new Vector2(800, 60 + offset), Color.White);
-                                    Graphics.DrawText("" + skill.Name + ", " + skill.InternalName, new Vector2(800, 60 + offset + 20), Color.White);
-                                    offset = offset + 20;
+                                    Graphics.DrawText("" + actorVaalSkill.VaalSkillSkillName + ", " + actorVaalSkill.VaalSkillDisplayName + ", " + actorVaalSkill.VaalSkillInternalName, new Vector2(800, 0 + offset), Color.White);
+                                    Graphics.DrawText("" + skill.Name + ", " + skill.InternalName, new Vector2(800, 0 + offset + 20), Color.White);
+                                    offset = offset + 40;
                                 }
                             }
                             if (SkillInfo.ManageCooldown(SkillInfo.vaalSkill, skill))
