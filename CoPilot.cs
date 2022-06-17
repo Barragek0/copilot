@@ -910,6 +910,14 @@ namespace CoPilot
                     if (Settings.anyVaalEnabled)
                         try
                         {
+                            if (Settings.debugMode)
+                            {
+                                foreach (ActorVaalSkill actorVaalSkill in vaalSkills)
+                                {
+                                    Graphics.DrawText("" + actorVaalSkill.VaalSkillSkillName+", "+actorVaalSkill.VaalSkillDisplayName+", "+actorVaalSkill.VaalSkillInternalName, new Vector2(1500, 240 + (20 * skillPos) + offset + localoffset), Color.White);
+                                    offset = offset + 20;
+                                }
+                            }
                             if (SkillInfo.ManageCooldown(SkillInfo.vaalSkill, skill))
                                 if (MonsterCheck(Settings.anyVaalTriggerRange, Settings.anyVaalMinAny,
                                     Settings.anyVaalMinRare, Settings.anyVaalMinUnique) && vaalSkills.Exists(x =>
