@@ -334,14 +334,15 @@ namespace CoPilot
                 vaalSkills = localPlayer.GetComponent<Actor>().ActorVaalSkills;
                 playerPosition = localPlayer.Pos;
                 int offset = (20 * (skills.Count));
+                int vaalOffset = (20 * (vaalSkills.Count));
                 if (Settings.debugMode)
                 {
                     Graphics.DrawText("isAttacking: " + isAttacking, new Vector2(10, 120), Color.White);
                     Graphics.DrawText("isCasting: " + isCasting, new Vector2(10, 140), Color.White);
                     Graphics.DrawText("isMoving: " + isMoving, new Vector2(10, 160), Color.White);
                     Graphics.DrawText("Skills: \n" + String.Join("\n", skills), new Vector2(10, 180), Color.White);
-                    Graphics.DrawText("VaalSkills: \n" + String.Join("\n", vaalSkills), new Vector2(10, 200 + offset), Color.White);
-                    offset = offset + (vaalSkills.Count * 20);
+                    Graphics.DrawText("VaalSkills: \n" + String.Join("\n", vaalSkills), new Vector2(10, 200 + offset + vaalOffset), Color.White);
+                    vaalOffset = vaalOffset + (vaalSkills.Count * 20);
                     Graphics.DrawText("PlayerPosition: " + playerPosition, new Vector2(10, 220 + offset), Color.White);
                     Graphics.DrawText("ActiveWindowTitle: " + ActiveWindowTitle(), new Vector2(10, 240 + offset), Color.White);
                 }
@@ -440,7 +441,6 @@ namespace CoPilot
                     !GameController.IsForeGroundCache)
                     return;
 
-                int skillPos = 0;
                 foreach (var skill in skills)
                 {
                     if (skill.Name != "")
@@ -453,8 +453,8 @@ namespace CoPilot
                                     (!skill.IsOnSkillBar ? "Not on skill bar" :
                                     skill.SkillSlotIndex < 1 ? "Skill slot index < 1" :
                                     skill.SkillSlotIndex == 2 ? "Skill slot index == 2" :
-                                    !skill.CanBeUsed ? "Skill cannot be used" : "Unknown"), new Vector2(1500, 240 + (20 * skillPos) + offset), Color.White);
-                                skillPos++;
+                                    !skill.CanBeUsed ? "Skill cannot be used" : "Unknown"), new Vector2(1100, 120 + offset), Color.White);
+                                offset = offset + 20;
                             }
                             continue;
                         }
@@ -915,7 +915,7 @@ namespace CoPilot
                                 foreach (ActorVaalSkill actorVaalSkill in vaalSkills)
                                 {
                                     Graphics.DrawText("" + actorVaalSkill.VaalSkillSkillName + ", " + actorVaalSkill.VaalSkillDisplayName + ", " + actorVaalSkill.VaalSkillInternalName, new Vector2(1500, 240 + (20 * skillPos) + offset), Color.White);
-                                    Graphics.DrawText("" + skill.Name + ", " + skill.InternalName, new Vector2(1500, 240 + (20 * skillPos) + offset + 20), Color.White);
+                                    Graphics.DrawText("" + skill.Name + ", " + skill.InternalName, new Vector2(1500, 240 + offset + 20), Color.White);
                                     offset = offset + 20;
                                 }
                             }
