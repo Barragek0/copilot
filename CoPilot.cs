@@ -449,7 +449,7 @@ namespace CoPilot
                         {
                             if (Settings.debugMode)
                             {
-                                Graphics.DrawText("Can't cast skill '" + skill.Name + "': " +
+                                Graphics.DrawText("Skill skip reason: Can't cast skill '" + skill.Name + "': " +
                                     (!skill.IsOnSkillBar ? "Not on skill bar" :
                                     skill.SkillSlotIndex < 1 ? "Skill slot index < 1" :
                                     skill.SkillSlotIndex == 2 ? "Skill slot index == 2" :
@@ -916,8 +916,8 @@ namespace CoPilot
                                 {
                                     if (actorVaalSkill.VaalSkillSkillName != "")
                                     {
-                                        Graphics.DrawText("" + actorVaalSkill.VaalSkillSkillName + ", " + actorVaalSkill.VaalSkillDisplayName + ", " + actorVaalSkill.VaalSkillInternalName, new Vector2(800, 0 + offset), Color.White);
-                                        Graphics.DrawText("" + skill.Name + ", " + skill.InternalName, new Vector2(800, 0 + offset + 20), Color.White);
+                                        Graphics.DrawText("actorVaalSkill: " + actorVaalSkill.VaalSkillSkillName + ", " + actorVaalSkill.VaalSkillDisplayName + ", " + actorVaalSkill.VaalSkillInternalName, new Vector2(800, 0 + offset), Color.White);
+                                        Graphics.DrawText("currentSkill in loop: " + skill.Name + ", " + skill.InternalName, new Vector2(800, 0 + offset + 20), Color.White);
                                         offset = offset + 40;
                                     }
                                 }
