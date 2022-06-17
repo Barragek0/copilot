@@ -926,13 +926,17 @@ namespace CoPilot
                                 if (MonsterCheck(Settings.anyVaalTriggerRange, Settings.anyVaalMinAny,
                                     Settings.anyVaalMinRare, Settings.anyVaalMinUnique) && vaalSkills.Exists(x =>
                                     (x.VaalSkillDisplayName == skill.Name ||
-                                    x.VaalSkillDisplayName.ToLower().Equals(skill.Name.ToLower().Replace(" ", "")) ||
-                                    x.VaalSkillDisplayName.ToLower().Equals(skill.Name.ToLower().Replace("vaal", "").Replace(" ", "")) &&
-                                    x.CurrVaalSouls >= x.VaalSoulsPerUse)))
-                                    if (player.HPPercentage<= (float)Settings.anyVaalHpp ||
-                                        player.MaxES > 0 && player.ESPercentage<
+                                    x.VaalSkillDisplayName.ToLower() == skill.Name.ToLower().Replace(" ", "") ||
+                                    x.VaalSkillDisplayName.ToLower() == skill.Name.ToLower().Replace("vaal", "").Replace(" ", "")) &&
+                                    x.CurrVaalSouls >= x.VaalSoulsPerUse))
+                                {
+                                    Graphics.DrawText("Found match: " + skill.Name, new Vector2(800, 0 + offset), Color.White);
+                                    offset = offset + 40;
+                                    if (player.HPPercentage <= (float)Settings.anyVaalHpp ||
+                                        player.MaxES > 0 && player.ESPercentage <
                                         (float)Settings.anyVaalEsp || player.MPPercentage < (float)Settings.anyVaalMpp / 100)
                                         Keyboard.KeyPress(GetSkillInputKey(skill.SkillSlotIndex));
+                                }
                         }
                         catch (Exception e)
                         {
