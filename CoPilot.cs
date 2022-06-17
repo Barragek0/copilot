@@ -453,7 +453,7 @@ namespace CoPilot
                                     (!skill.IsOnSkillBar ? "Not on skill bar" :
                                     skill.SkillSlotIndex < 1 ? "Skill slot index < 1" :
                                     skill.SkillSlotIndex == 2 ? "Skill slot index == 2" :
-                                    !skill.CanBeUsed ? "Skill cannot be used" : "Unknown"), new Vector2(1100, 120 + offset), Color.White);
+                                    !skill.CanBeUsed ? "Skill cannot be used" : "Unknown"), new Vector2(800, 120 + offset), Color.White);
                                 offset = offset + 20;
                             }
                             continue;
