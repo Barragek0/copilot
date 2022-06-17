@@ -914,7 +914,7 @@ namespace CoPilot
                             {
                                 foreach (ActorVaalSkill actorVaalSkill in vaalSkills)
                                 {
-                                    if (actorVaalSkill.VaalSkillSkillName != "")
+                                    if (actorVaalSkill.VaalSkillSkillName != "" && skill.Name != "")
                                     {
                                         Graphics.DrawText("actorVaalSkill: " + actorVaalSkill.VaalSkillSkillName + ", " + actorVaalSkill.VaalSkillDisplayName + ", " + actorVaalSkill.VaalSkillInternalName, new Vector2(800, 0 + offset), Color.White);
                                         Graphics.DrawText("currentSkill in loop: " + skill.Name + ", " + skill.InternalName, new Vector2(800, 0 + offset + 20), Color.White);
