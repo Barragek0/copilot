@@ -923,8 +923,8 @@ namespace CoPilot
                                 if (MonsterCheck(Settings.anyVaalTriggerRange, Settings.anyVaalMinAny,
                                     Settings.anyVaalMinRare, Settings.anyVaalMinUnique) && vaalSkills.Exists(x =>
                                     (x.VaalSkillDisplayName == skill.Name ||
-                                    x.VaalSkillDisplayName.ToLower().Equals(skill.Name.ToLower()) ||
-                                    x.VaalSkillDisplayName.ToLower().Equals(skill.Name.ToLower().Replace("vaal", "")) &&
+                                    x.VaalSkillDisplayName.ToLower().Equals(skill.Name.ToLower().Replace(" ", "")) ||
+                                    x.VaalSkillDisplayName.ToLower().Equals(skill.Name.ToLower().Replace("vaal", "").Replace(" ", "")) &&
                                     x.CurrVaalSouls >= x.VaalSoulsPerUse)))
                                     if (player.HPPercentage<= (float)Settings.anyVaalHpp ||
                                         player.MaxES > 0 && player.ESPercentage<
