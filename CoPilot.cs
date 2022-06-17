@@ -925,9 +925,9 @@ namespace CoPilot
                             if (SkillInfo.ManageCooldown(SkillInfo.vaalSkill, skill))
                                 if (MonsterCheck(Settings.anyVaalTriggerRange, Settings.anyVaalMinAny,
                                     Settings.anyVaalMinRare, Settings.anyVaalMinUnique) && vaalSkills.Exists(x =>
-                                    (x.VaalSkillDisplayName == skill.Name ||
-                                    x.VaalSkillDisplayName.ToLower() == skill.Name.ToLower().Replace(" ", "") ||
-                                    x.VaalSkillDisplayName.ToLower() == skill.Name.ToLower().Replace("vaal", "").Replace(" ", "")) &&
+                                    (x.VaalSkillSkillName == skill.Name || x.VaalSkillInternalName == skill.Name || x.VaalSkillDisplayName == skill.Name ||
+                                    x.VaalSkillDisplayName.Replace(" ", "") == skill.Name ||
+                                    x.VaalSkillDisplayName.Replace("vaal", "").Replace(" ", "") == skill.Name) &&
                                     x.CurrVaalSouls >= x.VaalSoulsPerUse))
                                 {
                                     Graphics.DrawText("Found match: " + skill.Name, new Vector2(800, 0 + offset), Color.White);
