@@ -930,8 +930,6 @@ namespace CoPilot
                                     x.VaalSkillDisplayName.Replace("Vaal", "").Replace(" ", "") == skill.Name) &&
                                     x.CurrVaalSouls >= x.VaalSoulsPerUse))
                                 {
-                                    Graphics.DrawText("Found match: " + skill.Name, new Vector2(800, 0 + offset), Color.White);
-                                    offset = offset + 40;
                                     if (player.HPPercentage <= (float)Settings.anyVaalHpp ||
                                         player.MaxES > 0 && player.ESPercentage <
                                         (float)Settings.anyVaalEsp || player.MPPercentage < (float)Settings.anyVaalMpp / 100)
