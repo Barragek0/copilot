@@ -914,16 +914,18 @@ namespace CoPilot
                             {
                                 foreach (ActorVaalSkill actorVaalSkill in vaalSkills)
                                 {
-                                    Graphics.DrawText("" + actorVaalSkill.VaalSkillSkillName + ", " + actorVaalSkill.VaalSkillDisplayName + ", " + actorVaalSkill.VaalSkillInternalName, new Vector2(800, 240 + offset), Color.White);
-                                    Graphics.DrawText("" + skill.Name + ", " + skill.InternalName, new Vector2(800, 240 + offset + 20), Color.White);
+                                    Graphics.DrawText("" + actorVaalSkill.VaalSkillSkillName + ", " + actorVaalSkill.VaalSkillDisplayName + ", " + actorVaalSkill.VaalSkillInternalName, new Vector2(800, 60 + offset), Color.White);
+                                    Graphics.DrawText("" + skill.Name + ", " + skill.InternalName, new Vector2(800, 60 + offset + 20), Color.White);
                                     offset = offset + 20;
                                 }
                             }
                             if (SkillInfo.ManageCooldown(SkillInfo.vaalSkill, skill))
                                 if (MonsterCheck(Settings.anyVaalTriggerRange, Settings.anyVaalMinAny,
                                     Settings.anyVaalMinRare, Settings.anyVaalMinUnique) && vaalSkills.Exists(x =>
-                                    x.VaalSkillSkillName == skill.Name &&
-                                    x.CurrVaalSouls >= x.VaalSoulsPerUse))
+                                    (x.VaalSkillDisplayName == skill.Name ||
+                                    x.VaalSkillDisplayName.ToLower().Equals(skill.Name.ToLower()) ||
+                                    x.VaalSkillDisplayName.ToLower().Equals(skill.Name.ToLower().Replace("vaal", "")) &&
+                                    x.CurrVaalSouls >= x.VaalSoulsPerUse)))
                                     if (player.HPPercentage<= (float)Settings.anyVaalHpp ||
                                         player.MaxES > 0 && player.ESPercentage<
                                         (float)Settings.anyVaalEsp || player.MPPercentage < (float)Settings.anyVaalMpp / 100)
