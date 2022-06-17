@@ -927,7 +927,7 @@ namespace CoPilot
                                     Settings.anyVaalMinRare, Settings.anyVaalMinUnique) && vaalSkills.Exists(x =>
                                     (x.VaalSkillSkillName == skill.Name || x.VaalSkillInternalName == skill.Name || x.VaalSkillDisplayName == skill.Name ||
                                     x.VaalSkillDisplayName.Replace(" ", "") == skill.Name ||
-                                    x.VaalSkillDisplayName.Replace("vaal", "").Replace(" ", "") == skill.Name) &&
+                                    x.VaalSkillDisplayName.Replace("Vaal", "").Replace(" ", "") == skill.Name) &&
                                     x.CurrVaalSouls >= x.VaalSoulsPerUse))
                                 {
                                     Graphics.DrawText("Found match: " + skill.Name, new Vector2(800, 0 + offset), Color.White);
