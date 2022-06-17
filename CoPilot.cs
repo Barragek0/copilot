@@ -914,9 +914,12 @@ namespace CoPilot
                             {
                                 foreach (ActorVaalSkill actorVaalSkill in vaalSkills)
                                 {
-                                    Graphics.DrawText("" + actorVaalSkill.VaalSkillSkillName + ", " + actorVaalSkill.VaalSkillDisplayName + ", " + actorVaalSkill.VaalSkillInternalName, new Vector2(800, 0 + offset), Color.White);
-                                    Graphics.DrawText("" + skill.Name + ", " + skill.InternalName, new Vector2(800, 0 + offset + 20), Color.White);
-                                    offset = offset + 40;
+                                    if (actorVaalSkill.VaalSkillSkillName != "")
+                                    {
+                                        Graphics.DrawText("" + actorVaalSkill.VaalSkillSkillName + ", " + actorVaalSkill.VaalSkillDisplayName + ", " + actorVaalSkill.VaalSkillInternalName, new Vector2(800, 0 + offset), Color.White);
+                                        Graphics.DrawText("" + skill.Name + ", " + skill.InternalName, new Vector2(800, 0 + offset + 20), Color.White);
+                                        offset = offset + 40;
+                                    }
                                 }
                             }
                             if (SkillInfo.ManageCooldown(SkillInfo.vaalSkill, skill))
